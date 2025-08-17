@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Mycontext } from '../App'
-import axios from 'axios'
+import axios from '../Axios/Axios_file.js'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 export const Editfood = () => {
@@ -42,7 +42,7 @@ export const Editfood = () => {
         {
             try 
             {
-                const response=await axios.post("http://localhost:5000/update",userdata)
+                const response=await axios.post("/update",userdata)
                 alert(response.data.message)
             } 
             catch (error)

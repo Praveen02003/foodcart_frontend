@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Mycontext } from '../App'
-import axios from 'axios'
+import axios from '../Axios/Axios_file.js'
 import { useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import '../App.css';
 export const Admindisplay = () => {
+  const[count,scount]=useState(0)
   const{
     fooddata,
     setFooddata,
@@ -23,12 +24,14 @@ export const Admindisplay = () => {
     }
     try 
     {
-      const response=await axios.post("http://localhost:5000/deletedata",userdata)
+      const response=await axios.post("/deletedata",userdata)
       alert(response.data.message)
+      scount(count+1)
     } 
     catch (error) 
     {
       alert(error.response.data.message)
+      scount(count+1)
     }
   }
   const editfood=(foodname,foodprice,id)=>{
@@ -46,7 +49,7 @@ export const Admindisplay = () => {
     const fetch=async()=>{
       try 
       {
-      const response=await axios.get('http://localhost:5000/display')
+      const response=await axios.get('/display')
       setFooddata(response.data.message)
       
       }
@@ -57,7 +60,7 @@ export const Admindisplay = () => {
     
     }
     fetch()
-  },[])
+  },[count])
   return (
     <div>
       <Button variant="contained" onClick={()=>{logout()}}>Logout</Button>

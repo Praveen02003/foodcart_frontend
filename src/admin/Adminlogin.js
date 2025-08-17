@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Mycontext } from '../App'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axios from '../Axios/Axios_file.js'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import '../App.css';
@@ -22,7 +22,7 @@ export const Adminlogin = () => {
         }
         try 
         {
-            const response=await axios.post("http://localhost:5000/sendmail",userdata)
+            const response=await axios.post("/sendmail",userdata)
             alert(response.data.message)
         } 
         catch (error) 
