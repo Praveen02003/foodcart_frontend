@@ -1,0 +1,127 @@
+/* ====== Base Page ====== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f9fb;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====== Container ====== */
+.editfood-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.editfood-card {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* ====== Title ====== */
+.editfood-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 25px;
+}
+
+/* ====== Form ====== */
+.editfood-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.editfood-form label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.editfood-form input[type="text"],
+.editfood-form input[type="file"] {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1.5px solid #d3d7dc;
+    margin-bottom: 20px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.editfood-form input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+/* ====== Image Preview ====== */
+.food-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 10px auto 25px;
+    border: 3px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+.food-preview:hover {
+    transform: scale(1.05);
+}
+
+/* ====== Buttons ====== */
+.editfood-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-primary,
+.btn-secondary {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #005ecb;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e2e2;
+    transform: translateY(-2px);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 500px) {
+    .editfood-card {
+        padding: 30px 20px;
+    }
+
+    .editfood-title {
+        font-size: 22px;
+    }
+}

@@ -1,94 +1,109 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Mycontext } from '../App'
-import axios from '../Axios/Axios_file.js'
-import { useNavigate } from 'react-router-dom'
-import Button from '@mui/material/Button';
-import '../App.css';
+import React, { useContext, useEffect, useState } from 'react';
+import { Mycontext } from '../App';
+import axios from '../Axios/Axios_file.js';
+import { useNavigate } from 'react-router-dom';
+import '../Styles/Admindisplay.css';
+import { deletefood } from '../Functions/Deletefood.js';
+import { editfood } from '../Functions/Editfood.js';
+import { logout } from '../Functions/Logout.js';
+import { Snackbar, Alert, Button } from "@mui/material";
 export const Admindisplay = () => {
-  const[count,scount]=useState(0)
-  const{
+
+  const {
     fooddata,
     setFooddata,
-    editfoodname,
     setEditfoodname,
-    editfoodprice,
     setEditfoodprice,
-    editfoodid,
-    setEditfoodid
-    }=useContext(Mycontext)
-  const navigate=useNavigate()
-  const deletefood=async(foodid)=>{
-    const userdata=
-    {
-      _id:foodid
+    setEditfoodid,
+    setEditfoodimage,
+    count,
+    setCount,
+    open,
+    setOpen,
+    severity,
+    setSeverity,
+    message,
+    setMessage
+  } = useContext(Mycontext);
+
+  const navigate = useNavigate();
+
+  const fetch = async () => {
+    try {
+      const response = await axios.get('/display');
+      setFooddata(response.data.message);
+    } catch {
+      alert('Unable To Find Food');
     }
-    try 
-    {
-      const response=await axios.post("/deletedata",userdata)
-      alert(response.data.message)
-      scount(count+1)
-    } 
-    catch (error) 
-    {
-      alert(error.response.data.message)
-      scount(count+1)
+  };
+
+  useEffect(() => {
+    const name = localStorage.getItem("username");
+    if (!name) {
+      navigate("/");
     }
-  }
-  const editfood=(foodname,foodprice,id)=>{
-    setEditfoodid(id)
-    setEditfoodname(foodname)
-    setEditfoodprice(foodprice)
-    navigate('/edit')
-  }
-  const logout=()=>{
-    localStorage.removeItem("username");
-    localStorage.clear();
-    navigate('/')
-  }
-  useEffect(()=>{
-    const fetch=async()=>{
-      try 
-      {
-      const response=await axios.get('/display')
-      setFooddata(response.data.message)
-      
-      }
-      catch (error) 
-      {
-        alert("Unable To Find Food")
-      }
-    
-    }
-    fetch()
-  },[count])
+    fetch();
+  }, [count]);
+
   return (
-    <div>
-      <Button variant="contained" onClick={()=>{logout()}}>Logout</Button>
-      <h1 className='h1'>ADMIN DISPLAY</h1>
-      <Button variant="contained" onClick={()=>{navigate('/add')}}>Add Food</Button>
-      <table border="1" cellPadding="8" className='table'>
+    <div className="admin-container">
+      <div className="admin-header">
+        <h1>Admin Dashboard</h1>
+        <div className="admin-actions">
+          <button className="btn btn-secondary" onClick={() => { logout(navigate) }}>Logout</button>
+          <button className="btn btn-primary" onClick={() => navigate('/add')}>Add Food</button>
+        </div>
+      </div>
+
+      <table className="admin-table">
         <thead>
           <tr>
-            <th><h3 className='h3'>Food Image</h3></th>
-            <th><h3 className='h3'>Food Name</h3></th>
-            <th><h3 className='h3'>Food Price</h3></th>
-            <th><h3 className='h3'>Options</h3></th>
+            <th>Food Image</th>
+            <th>Food Name</th>
+            <th>Price</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
-          {fooddata.map((food,index) => {
-            return(
-              <tr key={index}>
-                <td><img src={food.image} alt={food.foodname} style={{height:'250px',width:'250px',borderRadius:'10px'}}/></td>
-                <td><h4 className='h4'>{food.foodname}</h4></td>
-                <td><h4 className='h4'>{food.foodprice}rs</h4></td>
-                <td><Button variant="contained" onClick={()=>{editfood(food.foodname,food.foodprice,food._id)}} className='button'>Edit Food</Button><Button variant="contained" onClick={()=>{deletefood(food._id)}} className='button'>Delete Food</Button></td>
-              </tr>
-            )
-          
-          })}
+          {fooddata.map((food, index) => (
+            <tr key={index}>
+              <td>
+                <img
+                  src={food.image}
+                  alt={food.foodname}
+                  className="food-image"
+                />
+              </td>
+              <td>{food.foodname}</td>
+              <td>{food.foodprice} ₹</td>
+              <td>
+                <button
+                  className="btn btn-edit"
+                  onClick={() => editfood(food, setEditfoodid, setEditfoodname, setEditfoodprice, setEditfoodimage, navigate)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-delete"
+                  onClick={() => deletefood(food._id, count, setCount, setOpen, setSeverity, setMessage)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
+      <Snackbar
+        open={open}
+        autoHideDuration={500}
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert severity={severity} onClose={() => setOpen(false)}>
+          {message}
+        </Alert>
+      </Snackbar>
     </div>
-  )
-}
+  );
+};

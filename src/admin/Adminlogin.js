@@ -1,85 +1,80 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Mycontext } from '../App'
-import { useNavigate } from 'react-router-dom'
-import axios from '../Axios/Axios_file.js'
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import '../App.css';
+import React, { useContext, useEffect } from "react";
+import { Mycontext } from "../App";
+import { useNavigate } from "react-router-dom";
+import axios from "../Axios/Axios_file.js";
+import "../Styles/Adminlogin.css";
+import { Snackbar, Alert, Button } from "@mui/material";
+import { sendmail } from "../Functions/Sendmail.js";
+import { login } from "../Functions/Login.js";
 export const Adminlogin = () => {
-    const{
-        adminemail,
-        setAdminemail,
-        adminpassword,
-        setAdminpassword}=useContext(Mycontext)
-    var email="admin123@gmail.com"
-    var password="123"
-    const navigate=useNavigate()
-    const sendmail=async()=>{
-        const userdata={
-            to:"praveen.aeropilot@gmail.com",
-            subject:"Hello Admin",
-            message:`Your Mail : ${email} and Password : ${password}`
-        }
-        try 
-        {
-            const response=await axios.post("/sendmail",userdata)
-            alert(response.data.message)
-        } 
-        catch (error) 
-        {
-            alert(error.response.data.message)
-        }
+  const {
+    adminemail,
+    setAdminemail,
+    adminpassword,
+    setAdminpassword,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    open,
+    setOpen,
+    severity,
+    setSeverity,
+    message,
+    setMessage
+  } = useContext(Mycontext);
+
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const name = localStorage.getItem("username");
+    if (name) {
+      navigate("/admindisplay");
     }
-    const login=()=>{
-        if (!adminemail || !adminpassword)
-        {
-            alert("Please Fill The Data")
-        }
-        else if (adminemail === email && adminpassword === password)
-        {
-            alert('Login Successfull')
-            localStorage.setItem("username", "admin");
-            navigate('/admindisplay');
-        }
-        else if (adminemail !== email)
-        {
-            alert('Invalid Email')
-        }
-        else if (adminpassword !== password)
-        {
-            alert('Invalid Password')
-        }
-    }
-    useEffect(()=>{
-        const fetchdata=()=>{
-            const name = localStorage.getItem("username");
-            if (name)
-            {
-                alert("You Already Login")
-                navigate('/admindisplay')    
-            }
-            else if (!name)
-            {
-                navigate('/')    
-            }
-        }
-        fetchdata()
-    },[])
+  }, [navigate]);
+
   return (
-    <div className='a1'>
-        <h1 className='h1'>ADMIN LOGIN</h1>
-        <div className='a2'>
-            <TextField label="Email" variant="outlined" type="email" onChange={(event)=>{setAdminemail(event.target.value)}}/>
-            <br />
-            <br />
-            <TextField label="Password" variant="outlined" type="password" onChange={(event)=>{setAdminpassword(event.target.value)}}/>
-            <br />
-            <br />
-            <Button variant="contained" onClick={()=>{login()}} className='a3'>Login</Button>
-            <br />
-            <br />
-            <Button variant="contained" onClick={()=>{sendmail()}} className='a4'>Forget Password</Button>
+    <div className="admin-page">
+      <div className="admin-card">
+        <h1 className="admin-title">Admin Login</h1>
+
+        <div className="admin-form">
+          <label className="admin-label">Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            onChange={(event) => setAdminemail(event.target.value)}
+            className="admin-input"
+          />
+
+          <label className="admin-label">Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            onChange={(event) => setAdminpassword(event.target.value)}
+            className="admin-input"
+          />
+
+          <button onClick={() => { login(navigate, email, password, adminemail, adminpassword, setOpen, setSeverity, setMessage) }} className="btn login-btn">
+            Login
+          </button>
+
+          <button onClick={() => { sendmail(email, password) }} className="btn forget-btn">
+            Forget Password
+          </button>
         </div>
+      </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={500}
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert severity={severity} onClose={() => setOpen(false)}>
+          {message}
+        </Alert>
+      </Snackbar>
     </div>
-  )
-}
+  );
+};

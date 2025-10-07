@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Mycontext } from '../App'
 import axios from '../Axios/Axios_file.js'
 import { useNavigate } from 'react-router-dom'
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import '../Styles/Addfood.css'
+import { add } from '../Functions/Add.js'
+import { handleFile } from '../Functions/Handlefile.js'
+
 export const Addfood = () => {
-    const{
+    const {
         foodname,
         setFoodname,
         foodprice,
@@ -14,61 +16,57 @@ export const Addfood = () => {
         setFoodimage,
         addimagepreview,
         setAddimagepreview
-    }=useContext(Mycontext)
-    const navigate=useNavigate()
-    const handleFile = (e) => {
-        const file = e.target.files[0];
-        if (!file) return; 
-        setAddimagepreview(URL.createObjectURL(file));
-        const reader = new FileReader();
-        reader.onloadend = () => {
-        setFoodimage(reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
-    const add=async()=>{
-        
-        const userdata=
-        {
-            foodname:foodname,
-            foodprice:foodprice,
-            image:foodimage
+    } = useContext(Mycontext)
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const name = localStorage.getItem("username");
+        if (!name) {
+          navigate("/");
         }
-        if (!foodname || !foodprice)
-        {
-            alert("Please Fill The Data!!!!!!!!")
-        }
-        else
-        {
-            try 
-            {
-                const response=await axios.post("/addfood",userdata)
-                alert(response.data.message)
-            } 
-            catch (error) 
-            {
-                alert(error.response.data.message)
-            }
-        }
-        
-    }
-  return (
-    <div className='add'>
-        <Button variant="contained" onClick={()=>{navigate('/admindisplay')}}>Go To Display</Button>
-        <h1 className='h1'>ADD FOOD</h1>
-        <div>
-            <TextField id="outlined-basic" label="Food Name" variant="outlined" type="text" onChange={(event)=>{setFoodname(event.target.value)}}/>
-            <br />
-            <br />
-            <TextField id="outlined-basic" label="Food Price" variant="outlined" type="text" onChange={(event)=>{setFoodprice(event.target.value)}}/>
-            <br />
-            <br />
-            <input type="file" onChange={handleFile}/>
-            <br />
-            <br />
-            <img src={addimagepreview} alt="" style={{width:'200px',marginBottom:'20px'}}/>
-        </div> 
-        <Button variant="contained" onClick={()=>{add()}}>Add</Button>
-    </div>
-  )
+      }, []);
+    
+
+    return (
+        <div className="addfood-container">
+            <div className="addfood-card">
+                <h1 className="addfood-title">Add Food</h1>
+
+                <div className="addfood-form">
+                    <label>Food Name</label>
+                    <input
+                        type="text"
+                        placeholder="Enter food name"
+                        value={foodname}
+                        onChange={(e) => setFoodname(e.target.value)}
+                    />
+
+                    <label>Food Price</label>
+                    <input
+                        type="text"
+                        placeholder="Enter food price"
+                        value={foodprice}
+                        onChange={(e) => setFoodprice(e.target.value)}
+                    />
+
+                    <label>Food Image</label>
+                    <input type="file" onChange={(event) => { handleFile(event, setAddimagepreview, setFoodimage) }} />
+
+                    {addimagepreview && (
+                        <img src={addimagepreview} alt="preview" className="food-preview" />
+                    )}
+
+                    <div className="addfood-buttons">
+                        <button className="btn-secondary" onClick={() => navigate('/admindisplay')}>
+                            Go To Display
+                        </button>
+                        <button className="btn-primary" onClick={() => { add(foodname, foodprice, foodimage) }}>
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }

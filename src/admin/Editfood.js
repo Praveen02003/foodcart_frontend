@@ -1,75 +1,89 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Mycontext } from '../App'
 import axios from '../Axios/Axios_file.js'
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import '../Styles/Editfood.css'
+import { updatedata } from '../Functions/Updatefood.js'
+import { handleFile1 } from '../Functions/Handlefile1.js'
+import { Snackbar, Alert, Button } from "@mui/material";
 export const Editfood = () => {
-    const{
+    const {
         editfoodname,
         setEditfoodname,
         editfoodprice,
         setEditfoodprice,
         editfoodid,
-        setEditfoodid,
         editfoodimage,
         setEditfoodimage,
         imagepreview,
-        setImagepreview
-    }=useContext(Mycontext)
-    const handleFile = (e) => {
-        const file = e.target.files[0];
-        if (!file) return; 
-        setImagepreview(URL.createObjectURL(file));
-        const reader = new FileReader();
-        reader.onloadend = () => {
-        setEditfoodimage(reader.result);
-        };
-        reader.readAsDataURL(file);
-    };
-    const updatedata=async()=>{
-        const userdata={
-            _id:editfoodid,
-            foodname:editfoodname,
-            foodprice:editfoodprice,
-            image:editfoodimage
+        setImagepreview,
+        open,
+        setOpen,
+        severity,
+        setSeverity,
+        message,
+        setMessage
+    } = useContext(Mycontext)
+
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        const name = localStorage.getItem("username");
+        if (!name) {
+            navigate("/");
         }
-        if (!editfoodname || !editfoodprice) 
-        {
-            alert("Please Fill The Data!!!!!!!")    
-        }
-        else
-        {
-            try 
-            {
-                const response=await axios.post("/update",userdata)
-                alert(response.data.message)
-            } 
-            catch (error)
-            {
-                alert(error.response.data.message)
-            }
-        }
-        
-    }
-    const navigate=useNavigate()
-  return (
-    <div className='edit'>
-        <Button variant="contained" onClick={()=>{navigate('/admindisplay')}}>Go To Display</Button>
-        <h1 className='h1'>EDIT FOOD</h1>
-        <TextField id="outlined-basic" label="Food Name" variant="outlined" type="text" value={editfoodname} onChange={(event)=>{setEditfoodname(event.target.value)}}/>
-        <br />
-        <br />
-        <TextField id="outlined-basic" label="Food Price" variant="outlined" type="text" value={editfoodprice} onChange={(event)=>{setEditfoodprice(event.target.value)}}/>
-        <br />
-        <br />
-        <input type="file" onChange={handleFile}/> 
-        <br />
-        <br />
-        <img src={imagepreview} alt="" style={{width:'200px',marginBottom:'20px'}} />
-        <div>
-            <Button variant="contained" onClick={()=>{updatedata()}}>Update</Button>
+    }, []);
+
+
+    return (
+        <div className="editfood-container">
+            <div className="editfood-card">
+                <h1 className="editfood-title">Edit Food</h1>
+
+                <div className="editfood-form">
+                    <label>Food Name</label>
+                    <input
+                        type="text"
+                        value={editfoodname}
+                        placeholder="Enter food name"
+                        onChange={(e) => setEditfoodname(e.target.value)}
+                    />
+
+                    <label>Food Price</label>
+                    <input
+                        type="text"
+                        value={editfoodprice}
+                        placeholder="Enter food price"
+                        onChange={(e) => setEditfoodprice(e.target.value)}
+                    />
+
+                    <label>Food Image</label>
+                    <input type="file" onChange={(event) => { handleFile1(event, setEditfoodimage) }} />
+
+                    <img src={editfoodimage} alt="iamge" className="food-preview" />
+
+
+                    <div className="editfood-buttons">
+                        <button className="btn-secondary" onClick={() => navigate('/admindisplay')}>
+                            Go To Display
+                        </button>
+                        <button className="btn-primary" onClick={() => { updatedata(navigate, editfoodid, editfoodname, editfoodprice, editfoodimage, setEditfoodimage, setOpen, setSeverity, setMessage) }}>
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <Snackbar
+                open={open}
+                autoHideDuration={300}
+                onClose={() => setOpen(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            >
+                <Alert severity={severity} onClose={() => setOpen(false)}>
+                    {message}
+                </Alert>
+            </Snackbar>
         </div>
-    </div>
-  )
+    )
 }
