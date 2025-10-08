@@ -7,6 +7,7 @@ import { deletefood } from '../Functions/Deletefood.js';
 import { editfood } from '../Functions/Editfood.js';
 import { logout } from '../Functions/Logout.js';
 import { Snackbar, Alert, Button } from "@mui/material";
+import { Loader } from '../Loader/Loader.js';
 export const Admindisplay = () => {
 
   const {
@@ -65,7 +66,7 @@ export const Admindisplay = () => {
           </tr>
         </thead>
         <tbody>
-          {fooddata.map((food, index) => (
+          {fooddata.length > 0 ? fooddata.map((food, index) => (
             <tr key={index}>
               <td>
                 <img
@@ -91,7 +92,7 @@ export const Admindisplay = () => {
                 </button>
               </td>
             </tr>
-          ))}
+          )): Loader()}
         </tbody>
       </table>
       <Snackbar
