@@ -1,0 +1,102 @@
+.notfound-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background: linear-gradient(135deg, #e0f2ff, #fff0f0); /* softer background */
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+}
+
+.notfound-card {
+  text-align: center;
+  background: #ffffff;
+  padding: 70px 60px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 450px;
+  animation: softLanding 0.8s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notfound-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.notfound-card h1 {
+  font-size: 90px;
+  color: #ff6f61; /* primary accent */
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.notfound-card h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.notfound-card p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 35px;
+  line-height: 1.8;
+}
+
+.notfound-card button {
+  background: linear-gradient(135deg, #ff6f61, #ff8575);
+  color: #fff;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.notfound-card button:hover {
+  background: linear-gradient(135deg, #ff8575, #ff9a87);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 111, 97, 0.3);
+}
+
+/* Animation */
+@keyframes softLanding {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .notfound-card {
+    padding: 50px 25px;
+  }
+
+  .notfound-card h1 {
+    font-size: 70px;
+  }
+
+  .notfound-card h2 {
+    font-size: 22px;
+  }
+
+  .notfound-card p {
+    font-size: 14px;
+  }
+
+  .notfound-card button {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+}

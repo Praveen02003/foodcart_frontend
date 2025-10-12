@@ -1,0 +1,109 @@
+.admin-help {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #fdfbfb, #ebedfa);
+  color: #2d2d2d;
+  padding: 10px 60px;
+  min-height: 100vh;
+}
+
+.help-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #ff6f61;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 3px rgba(255, 111, 97, 0.3);
+}
+
+.help-section {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.help-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.help-section h2 {
+  font-size: 1.5rem;
+  color: #3a3a3a;
+  margin-bottom: 12px;
+}
+
+.help-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.faq-card {
+  background: #f9f9ff;
+  border-left: 5px solid #ff6f61;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  transition: background 0.3s ease;
+}
+
+.faq-card:hover {
+  background: #fff5f4;
+}
+
+.faq-card h3 {
+  color: #333;
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+}
+
+.troubleshooting-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.troubleshooting-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  background: #f8f9ff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.troubleshooting-list li:hover {
+  background: #ffecec;
+}
+
+.contact-section {
+  text-align: center;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, #fff0ee, #ffe8e3);
+  border-radius: 12px;
+  display: inline-block;
+  padding: 20px 40px;
+  margin-top: 15px;
+  box-shadow: 0 6px 12px rgba(255, 111, 97, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: scale(1.03);
+}
+
+.contact-card a {
+  color: #ff6f61;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}

@@ -1,4 +1,4 @@
 export const logout = (navigate) => {
-    localStorage.clear();
-    navigate('/');
-};
+    localStorage.removeItem('admintoken')
+    navigate('/')
+}

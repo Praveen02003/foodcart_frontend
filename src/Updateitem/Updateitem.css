@@ -1,0 +1,108 @@
+/* Page container */
+.update-item-page {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fdfcfb, #f7f9ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  animation: fadeInPage 0.6s ease-in-out;
+}
+
+/* Card container */
+.update-item-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 420px;
+  transition: all 0.3s ease;
+  animation: slideUp 0.6s ease-in-out;
+}
+
+/* Card Title */
+.update-item-card h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Input groups */
+.update-item-card .input-group {
+  margin-bottom: 15px;
+}
+
+.update-item-card label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #555;
+}
+
+.update-item-card input,
+.update-item-card select,
+.update-item-card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.update-item-card input:focus,
+.update-item-card select:focus,
+.update-item-card textarea:focus {
+  border-color: #ff6f61;
+  box-shadow: 0 0 8px rgba(255, 111, 97, 0.2);
+  background: #fff;
+}
+
+/* Image preview */
+.update-item-card .image-preview {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.update-item-card .image-preview img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.update-button {
+  margin-top: 15px;
+  padding: 14px;
+  width: 100%;
+  background: linear-gradient(135deg, #ff6f61, #ff8575);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.update-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 111, 97, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInPage {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}

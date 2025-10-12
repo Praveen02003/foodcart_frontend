@@ -1,0 +1,185 @@
+.viewitems-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff5f2, #fefefe);
+  padding: 10px 70px;
+  font-family: "Poppins", sans-serif;
+  animation: softLanding 0.8s ease-in-out;
+}
+
+@keyframes softLanding {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.viewitems-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.viewitems-header h1 {
+  font-size: 2.5rem;
+  color: #ff6f61;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.viewitems-header p {
+  color: #555;
+  font-size: 1rem;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.table-container {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.table-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.08);
+}
+
+.viewitems-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.viewitems-table thead {
+  background: linear-gradient(135deg, #ff6f61, #ff8a73);
+  color: #fff;
+}
+
+.viewitems-table th {
+  padding: 16px 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  font-size: 15px;
+}
+
+.viewitems-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #f3f3f3;
+  color: #333;
+  vertical-align: middle;
+  transition: background 0.3s ease;
+}
+
+.viewitems-table tbody tr:hover {
+  background-color: #fff6f5;
+}
+
+.item-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #ffe5e0;
+  transition: transform 0.3s ease;
+}
+
+.item-img:hover {
+  transform: scale(1.08);
+}
+
+.strike {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.offer {
+  color: #ff6f61;
+  font-weight: 600;
+}
+
+.price {
+  color: #28a745;
+  font-weight: 700;
+}
+
+.desc {
+  max-width: 250px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.update-btn,
+.delete-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.update-btn {
+  background: #4caf50;
+}
+
+.update-btn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(72, 239, 128, 0.3);
+}
+
+.delete-btn {
+  background: #ff4b4b;
+}
+
+.delete-btn:hover {
+  background: #ff6b6b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(255, 77, 77, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .viewitems-wrapper {
+    padding: 30px 20px;
+  }
+
+  .table-container {
+    padding: 15px;
+  }
+
+  .viewitems-header h1 {
+    font-size: 2rem;
+  }
+
+  .viewitems-table th,
+  .viewitems-table td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .item-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

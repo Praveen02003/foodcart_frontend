@@ -1,0 +1,109 @@
+.about-page {
+  background: linear-gradient(135deg, #d6f4f4 0%, #eae0e3 100%);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  padding: 60px 8%;
+}
+
+.about-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  padding-right: 40px;
+}
+
+.about-text h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.about-text h1 span {
+  color: #ff4d6d;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.about-mission, .about-values, .about-vision, .about-footer {
+  margin-bottom: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.about-divider {
+  width: 60px;          /* length of the line */
+  height: 3px;          /* thickness */
+  background: #ff4d6d;  /* color of the line */
+  border: none;         /* remove default border */
+  margin: 10px 15px; /* center it with spacing */
+  border-radius: 2px;   /* rounded ends */
+}
+
+.about-mission:hover, .about-values:hover, .about-vision:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.about-mission h2,
+.about-values h2,
+.about-vision h2 {
+  color: #ff4d6d;
+  margin-bottom: 15px;
+}
+
+.about-values ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-values li {
+  font-size: 1rem;
+  padding: 8px 0;
+  color: #444;
+}
+
+.about-footer {
+  text-align: center;
+}
+
+.about-footer h3 {
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.about-footer span {
+  color: #ff4d6d;
+}
+
+.about-footer p {
+  font-size: 1rem;
+  color: #555;
+}
