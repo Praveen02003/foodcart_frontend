@@ -137,7 +137,7 @@ export const Additems = () => {
             </div>
             <Snackbar
                 open={open}
-                autoHideDuration={500}
+                autoHideDuration={300}
                 onClose={() => setOpen(false)}
                 anchorOrigin={{ vertical: "top", horizontal: "right" }}
             >
