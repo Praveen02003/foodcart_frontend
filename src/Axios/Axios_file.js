@@ -8,4 +8,4 @@ const Instance = axios.create({
   },
 });
 
-export default Instance;
+export default Instance;  

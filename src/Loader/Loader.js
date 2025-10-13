@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Loader/Loader.css'
-export const Loader = () => {
+export const loader = () => {
     return (
         <div class="dot-loader">
             <span></span>

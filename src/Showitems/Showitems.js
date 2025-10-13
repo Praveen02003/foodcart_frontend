@@ -7,6 +7,7 @@ import { updateitemstate } from '../Functions/Updateitemstate'
 import { useNavigate } from 'react-router-dom'
 import { restrictpages } from '../Functions/Restrictadmin'
 import { Snackbar, Alert, Button } from "@mui/material";
+import { loader } from '../Loader/Loader'
 export const Showitems = () => {
   const {
     showitems,
@@ -67,7 +68,7 @@ export const Showitems = () => {
           </thead>
 
           <tbody>
-            {showitems.map((data, index) => (
+            {showitems.length > 0 ? showitems.map((data, index) => (
               <tr key={index}>
                 <td>
                   <img src={data.image} alt={data.name} className="item-img" />
@@ -95,7 +96,7 @@ export const Showitems = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+            )) : loader()}
           </tbody>
         </table>
       </div>
