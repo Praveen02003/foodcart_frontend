@@ -6,10 +6,10 @@ export const About = () => {
         <div className="about-page">
             <section className="about-hero">
                 <div className="about-text">
-                    <h1>About <span>FoodieApp</span></h1>
+                    <h1>About <span>Tastenow</span></h1>
                     <hr className="about-divider" />
                     <p>
-                        Welcome to <strong>FoodieApp</strong> — your one-stop destination for delicious food, quick delivery, and a satisfying dining experience from the comfort of your home.
+                        Welcome to <strong>Tastenow</strong> — your one-stop destination for delicious food, quick delivery, and a satisfying dining experience from the comfort of your home.
                     </p>
                 </div>
                 <div className="about-image">
@@ -47,9 +47,9 @@ export const About = () => {
             </section>
 
             <section className="about-footer">
-                <h3>Join the <span>FoodieApp</span> Family Today!</h3>
+                <h3>Join the <span>Tastenow</span> Family Today!</h3>
                 <p>
-                    Whether you're craving pizza, burgers, or something sweet, <strong>FoodieApp</strong> has got you covered.
+                    Whether you're craving pizza, burgers, or something sweet, <strong>Tastenow</strong> has got you covered.
                     Order now and taste the joy of hassle-free food delivery.
                 </p>
             </section>

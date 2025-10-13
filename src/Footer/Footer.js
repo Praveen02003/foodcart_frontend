@@ -5,9 +5,9 @@ export const Footer = () => {
   const navigate = useNavigate()
   return (
     <footer className="admin-footer">
-      <h3>Foodie Admin</h3>
+      <h3>Tastenow Admin Panel</h3>
       <p>Manage your orders, menu, and customers efficiently.</p>
-      <p>© 2025 Foodie. All rights reserved.</p>
+      <p>© 2025 Tastenow. All rights reserved.</p>
 
       <div className="footer-links">
         <span onClick={() => { navigate('/about') }}>About</span>

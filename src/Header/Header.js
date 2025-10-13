@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <header className="admin-header">
       <div className="header-left" onClick={() => navigate("/home")}>
-        <h1 className="logo">Foodie<span>Admin</span></h1>
+        <h1 className="logo">Tastenow <span>Admin Panel</span></h1>
       </div>
 
       {localStorage.getItem("admintoken") ? (

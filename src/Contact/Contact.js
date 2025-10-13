@@ -13,9 +13,9 @@ export const Contact = () => {
             <div className="contact-container">
                 <div className="contact-info">
                     <h2>Get in Touch</h2>
-                    <p>📍 123 Foodie Street, Chennai, India</p>
+                    <p>📍 123 Foodie Street, India</p>
                     <p>📞 +91 98765 43210</p>
-                    <p>✉️ support@foodieapp.com</p>
+                    <p>✉️ support@tastenow.com</p>
                     <p>🕒 Mon - Sun | 9:00 AM - 11:00 PM</p>
 
                     <div className="social-links">
@@ -63,7 +63,7 @@ export const Contact = () => {
             </div>
 
             <p className="footer-note">
-                ❤️ Thank you for choosing <strong>FoodieApp</strong> — delivering happiness, one meal at a time.
+                ❤️ Thank you for choosing <strong>Tastenow</strong> — delivering happiness, one meal at a time.
             </p>
         </div>
     )
