@@ -9,7 +9,6 @@ export const Contact = () => {
                 We'd love to hear from you! Whether you have a question about your order,
                 need support, or want to partner with us — our team is here to help.
             </p>
-
             <div className="contact-container">
                 <div className="contact-info">
                     <h2>Get in Touch</h2>

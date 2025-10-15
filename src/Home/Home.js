@@ -7,6 +7,7 @@ import { gettotalorders } from '../Functions/Gettotalorders';
 import { gettotalcustomers } from '../Functions/Gettotalcustomers';
 import { gettotalrevenue } from '../Functions/Gettotalrevenue';
 import { restrictpages } from '../Functions/Restrictadmin';
+import { loader } from '../Loader/Loader';
 export const Home = () => {
     const {
         itemslength,
@@ -35,7 +36,7 @@ export const Home = () => {
                     <div className="stat-icon">🛒</div>
                     <div className="stat-info">
                         <h3>Total Orders</h3>
-                        <p>{totalorders}</p>
+                        <p>{totalorders === null ? loader() : totalorders}</p>
                     </div>
                 </div>
 
@@ -43,7 +44,7 @@ export const Home = () => {
                     <div className="stat-icon">💰</div>
                     <div className="stat-info">
                         <h3>Revenue</h3>
-                        <p>₹{totalrevenue}</p>
+                        <p>₹{totalrevenue === null ? loader() : totalrevenue }</p>
                     </div>
                 </div>
 
@@ -51,7 +52,7 @@ export const Home = () => {
                     <div className="stat-icon">👥</div>
                     <div className="stat-info">
                         <h3>Customers</h3>
-                        <p>{totalcustomers}</p>
+                        <p>{totalcustomers === null ? loader() : totalcustomers }</p>
                     </div>
                 </div>
 
@@ -59,7 +60,7 @@ export const Home = () => {
                     <div className="stat-icon">🍔</div>
                     <div className="stat-info">
                         <h3>Menu Items</h3>
-                        <p>{itemslength}</p>
+                        <p>{itemslength === null ? loader() : itemslength }</p>
                     </div>
                 </div>
             </div>

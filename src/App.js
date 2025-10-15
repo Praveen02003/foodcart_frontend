@@ -38,10 +38,10 @@ function App() {
 
   const [showorders, setShoworders] = useState([])
 
-  const [itemslength, setItemslength] = useState(0)
-  const [totalorders, setTotalorders] = useState(0)
-  const [totalcustomers, setTotalcustomers] = useState(0)
-  const [totalrevenue, setTotalrevenue] = useState(0)
+  const [itemslength, setItemslength] = useState(null)
+  const [totalorders, setTotalorders] = useState(null)
+  const [totalcustomers, setTotalcustomers] = useState(null)
+  const [totalrevenue, setTotalrevenue] = useState(null)
 
   const [open, setOpen] = useState(false);
   const [severity, setSeverity] = useState("");
